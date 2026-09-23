@@ -22,6 +22,30 @@ Opens on a local port (Vite prints the URL). It fetches
 (`POLL_INTERVAL_MS` in `src/data/useTrustData.js`) — this is a
 periodically-refreshed report, not a live feed.
 
+## Publishing it as a live website (GitHub Pages)
+
+A workflow at `.github/workflows/deploy-dashboard.yml` builds this app and
+publishes it to GitHub Pages automatically on every push to `main` that
+touches `dashboard/`. It'll be live at:
+
+```
+https://deaconeit.github.io/Marae-Solar-Project/
+```
+
+**One-time setup an admin on the repo needs to do** (this account doesn't
+have admin, so it can't be done from here): go to **Settings → Pages** on
+the repo, and under **Build and deployment → Source**, choose
+**GitHub Actions**. After that, the workflow above handles every future
+deploy — nothing further to configure.
+
+You can also trigger a deploy manually from the **Actions** tab
+("Deploy dashboard to GitHub Pages" → **Run workflow**) once Pages is
+enabled, without waiting for a push to `main`.
+
+Note the published site only ever shows whatever's in
+`public/muriwai_standard_30min.csv` at the time it was built — regenerate
+that file (see below) and push to `main` to update the live numbers.
+
 ## The data pipeline
 
 This project follows the standard data shape Trust Tairāwhiti asked for —
