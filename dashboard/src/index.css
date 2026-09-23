@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #f0efec;
+  background: #17171b;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* Desktop-first: a fixed sidebar + scrolling main content, built for
+   analysts reading tables and charts rather than a glanceable wall screen.
+   The sidebar sits flush against the real viewport edge (no outer max-width
+   on the shell) — only the main content's contents are width-capped, via
+   max-width on the elements inside each screen. */
+.app-shell {
+  display: flex;
+  min-height: 100%;
+}
+
+.app-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+}
+
+/* Narrow viewports (phone) still work, just stack instead of side-by-side. */
+@media (max-width: 720px) {
+  .app-shell {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none !important;
+    border-bottom: 1px solid #39393f;
+  }
+}
+
+/* Flat hover states — a border/background swap, no lift or shadow. */
+.kpi-card {
+  transition: border-color 0.12s ease, background 0.12s ease;
+}
+.kpi-card:hover {
+  border-color: #4d4d55;
+  background: #2c2c33;
+}
+
+table tbody tr {
+  transition: background 0.1s ease;
+}
+table tbody tr:hover {
+  background: #2c2c33 !important;
+}
+
+nav button {
+  transition: background 0.1s ease, color 0.1s ease;
+}
+nav button:hover {
+  background: #2c2c33;
+}
+
+svg[role="img"] rect {
+  transition: opacity 0.12s ease;
+  cursor: default;
+}
+svg[role="img"] g:hover rect {
+  opacity: 0.8;
+}
+
+.pulse-dot {
+  animation: pulse 2.2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid #fdb84e;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

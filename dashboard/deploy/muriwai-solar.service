@@ -1,0 +1,34 @@
+# Fallback option if nginx isn't installed on the Pi: serve the built dashboard
+# with Python's built-in web server, kept alive by systemd (auto-restarts on
+# crash, auto-starts on boot). Python 3 ships with Raspberry Pi OS by default.
+#
+# Only use ONE of nginx or this — not both.
+#
+# Runs on port 8080 (unprivileged, so it can run as www-data rather than root):
+# devices reach it at http://<pi-address>:8080 instead of the plain port 80
+# nginx would give you. Prefer nginx (deploy/nginx-muriwai-solar.conf) if you
+# want a bare http://<pi-address> URL without the port.
+#
+# Install:
+#   sudo cp deploy/muriwai-solar.service /etc/systemd/system/
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now muriwai-solar
+#   sudo systemctl status muriwai-solar
+#
+# Assumes the built dashboard + data.json both live in /var/www/muriwai-solar
+# (see README.md "Deploying to the Pi").
+
+[Unit]
+Description=Muriwai Marae solar dashboard (static file server)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/var/www/muriwai-solar
+ExecStart=/usr/bin/python3 -m http.server 8080
+Restart=on-failure
+RestartSec=5
+User=www-data
+
+[Install]
+WantedBy=multi-user.target
