@@ -29,8 +29,7 @@ export default function Sidebar({ screen, onChange, isLive, lastDate }) {
           Solar analytics
         </div>
         <p style={{ fontFamily: font.ui, fontSize: 12.5, color: color.lilac, marginTop: 8, lineHeight: 1.55 }}>
-          What the sun made, what the marae used, and what's left over to put
-          into a deal.
+          What the sun made, what the marae used, and what's left over.
         </p>
       </div>
 
