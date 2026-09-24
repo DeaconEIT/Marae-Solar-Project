@@ -1,7 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
+/* Colour tokens as CSS custom properties, so the light/dark toggle can
+   flip everything at once via a `data-theme` attribute on <html> — see
+   ThemeToggle + App.jsx. Dark is the default (no attribute needed);
+   `:root[data-theme="light"]` overrides every value for light mode.
+   Both palettes keep to red/black/white: black/white always means
+   "whichever pole contrasts with the current background". */
 :root {
   color-scheme: dark;
+
+  --bg: #121212;
+  --sun: #d8232a;
+  --ochre: #8c1a1a;
+  --flax: #f0efec;
+  --cream: #f5f4f2;
+  --lilac: #a3a3a3;
+  --panel: #1c1c1c;
+  --panel-alt: #262626;
+  --panel-border: #343434;
+  --panel-border-strong: #4a4a4a;
+  --positive: #f0efec;
+  --negative: #8c1a1a;
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --bg: #f7f5f3;
+  --sun: #b81f27;
+  --ochre: #6e1313;
+  --flax: #1c1c1c;
+  --cream: #1c1c1c;
+  --lilac: #6b6b6b;
+  --panel: #ffffff;
+  --panel-alt: #f0eeec;
+  --panel-border: #e0dcd8;
+  --panel-border-strong: #c7c0ba;
+  --positive: #1c1c1c;
+  --negative: #6e1313;
 }
 
 * {
@@ -17,9 +53,10 @@ body,
 body {
   margin: 0;
   font-family: 'Inter', system-ui, sans-serif;
-  color: #f0efec;
-  background: #17171b;
+  color: var(--cream);
+  background: var(--bg);
   -webkit-font-smoothing: antialiased;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
 button {
@@ -55,7 +92,7 @@ button {
   .sidebar {
     width: 100%;
     border-right: none !important;
-    border-bottom: 1px solid #39393f;
+    border-bottom: 1px solid var(--panel-border);
   }
 }
 
@@ -64,22 +101,30 @@ button {
   transition: border-color 0.12s ease, background 0.12s ease;
 }
 .kpi-card:hover {
-  border-color: #4d4d55;
-  background: #2c2c33;
+  border-color: var(--panel-border-strong);
+  background: var(--panel-alt);
 }
 
 table tbody tr {
   transition: background 0.1s ease;
 }
 table tbody tr:hover {
-  background: #2c2c33 !important;
+  background: var(--panel-alt) !important;
 }
 
 nav button {
   transition: background 0.1s ease, color 0.1s ease;
 }
 nav button:hover {
-  background: #2c2c33;
+  background: var(--panel-alt);
+}
+
+.theme-toggle {
+  transition: background 0.1s ease, border-color 0.1s ease;
+}
+.theme-toggle:hover {
+  background: var(--panel-alt);
+  border-color: var(--panel-border-strong);
 }
 
 svg[role="img"] rect {
@@ -100,7 +145,7 @@ svg[role="img"] g:hover rect {
 
 button:focus-visible,
 input:focus-visible {
-  outline: 2px solid #d8232a;
+  outline: 2px solid var(--sun);
   outline-offset: 2px;
 }
 

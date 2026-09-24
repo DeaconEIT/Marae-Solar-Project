@@ -1,5 +1,6 @@
 import { color, font } from '../theme/tokens';
 import { IconGrid, IconBars, IconHandshake, IconTable, IconDot } from './icons';
+import ThemeToggle from './ThemeToggle';
 
 export const SCREENS = [
   { id: 'overview', label: 'Overview', Icon: IconGrid },
@@ -8,7 +9,7 @@ export const SCREENS = [
   { id: 'raw', label: 'Raw data', Icon: IconTable },
 ];
 
-export default function Sidebar({ screen, onChange, isLive, lastDate }) {
+export default function Sidebar({ screen, onChange, isLive, lastDate, theme, onThemeChange }) {
   return (
     <aside
       className="sidebar"
@@ -64,6 +65,8 @@ export default function Sidebar({ screen, onChange, isLive, lastDate }) {
           );
         })}
       </nav>
+
+      <ThemeToggle theme={theme} onToggle={onThemeChange} />
 
       <div style={{ marginTop: 'auto', fontFamily: font.ui, fontSize: 12.5, color: color.lilac }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>

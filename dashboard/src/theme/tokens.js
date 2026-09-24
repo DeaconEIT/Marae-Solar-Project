@@ -19,23 +19,30 @@
 // "Dawn" palette's token names, repurposed here for the red/black/white
 // scheme — kept so both this app and the community screen can share this
 // file's shape even though the exact values and roles now differ.
+//
+// Values are CSS custom properties, not hex literals, so the light/dark
+// toggle (see ThemeToggle + App.jsx) can flip every colour at once by
+// setting `data-theme` on <html> — see the variable definitions and both
+// palettes in index.css. `black`/`white` here always mean "whichever pole
+// contrasts with the current background", so self-used/positive stays
+// legible in both themes without a second code path.
 
 export const color = {
-  bg: '#121212', // page background — near-black (pango)
+  bg: 'var(--bg)', // page background
 
-  sun: '#d8232a', // kōkōwai red — primary accent (exported, highlights)
-  ochre: '#8c1a1a', // deeper red — negative/lowest-value accent
-  flax: '#f0efec', // mā white — secondary data colour (self-used, positive)
-  cream: '#f5f4f2', // primary text ink (mā white)
-  lilac: '#a3a3a3', // secondary/muted text (grey, not tinted)
+  sun: 'var(--sun)', // kōkōwai red — primary accent (exported, highlights)
+  ochre: 'var(--ochre)', // deeper red — negative/lowest-value accent
+  flax: 'var(--flax)', // secondary data colour (self-used, positive)
+  cream: 'var(--cream)', // primary text ink
+  lilac: 'var(--lilac)', // secondary/muted text
 
-  panel: '#1c1c1c', // card surface — clearly lighter than bg for real elevation
-  panelAlt: '#262626', // flat, striped rows / hover states
-  panelBorder: '#343434', // flat border colour
-  panelBorderStrong: '#4a4a4a',
+  panel: 'var(--panel)', // card surface — distinct from bg for real elevation
+  panelAlt: 'var(--panel-alt)', // flat, striped rows / hover states
+  panelBorder: 'var(--panel-border)', // flat border colour
+  panelBorderStrong: 'var(--panel-border-strong)',
 
-  positive: '#f0efec',
-  negative: '#8c1a1a',
+  positive: 'var(--positive)',
+  negative: 'var(--negative)',
 };
 
 export const font = {

@@ -11,6 +11,14 @@ export function IconSun(props) {
   );
 }
 
+export function IconMoon(props) {
+  return (
+    <svg viewBox="0 0 24 24" width="17" height="17" stroke="currentColor" {...common} {...props}>
+      <path d="M20 14.2A8.5 8.5 0 1 1 9.8 4a6.7 6.7 0 0 0 10.2 10.2Z" />
+    </svg>
+  );
+}
+
 export function IconFlow(props) {
   return (
     <svg viewBox="0 0 24 24" width="19" height="19" stroke="currentColor" {...common} {...props}>
