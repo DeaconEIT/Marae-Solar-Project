@@ -100,7 +100,7 @@ svg[role="img"] g:hover rect {
 
 button:focus-visible,
 input:focus-visible {
-  outline: 2px solid #fdb84e;
+  outline: 2px solid #d8232a;
   outline-offset: 2px;
 }
 

@@ -54,7 +54,7 @@ export default function Generation({ data }) {
         </div>
         <p style={{ fontFamily: font.ui, fontSize: 13.5, color: color.lilac, marginTop: 0, marginBottom: 16, maxWidth: 600, lineHeight: 1.6 }}>
           One representative day's hourly profile (30-min readings averaged into
-          kW), not an average across all days. Generation (gold) peaks
+          kW), not an average across all days. Generation (red) peaks
           mid-morning to early afternoon while site load (dashed) stays low most
           of the day — <strong style={{ color: color.cream }}>the gap between the two lines is exportable surplus</strong>,
           and matters for any time-of-use or PPA rate negotiation.

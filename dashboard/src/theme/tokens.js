@@ -1,35 +1,41 @@
-// Shared design tokens. Same "Dawn" palette as the marae's community screen
-// (this is still Muriwai's colour identity), restyled for a desktop
-// analytics tool: tighter radii, denser spacing, tabular numerals — built
-// for reading tables and charts, not for a glanceable hero screen.
+// Shared design tokens. Palette rebuilt around kōkōwai (red ochre), pango
+// (black) and mā (white) — the traditional three-colour set seen in
+// kōwhaiwhai and tukutuku panels — rather than the earlier purple/gold
+// "Dawn" scheme. Restyled for a desktop analytics tool: tighter radii,
+// denser spacing, tabular numerals — built for reading tables and charts,
+// not for a glanceable hero screen.
 //
-// Dark theme, but with real elevation: background and panel are two
-// distinct, clearly different greys (not both near-black), so cards read
-// as surfaces sitting above the page rather than everything blurring into
-// one dark mass. Flat colours throughout — no gradients, no glow, no
-// translucent glass overlays.
+// Dark theme, with real elevation: background and panel are two distinct,
+// clearly different near-blacks (not both flat black), so cards read as
+// surfaces sitting above the page. Flat colours throughout — no gradients,
+// no glow, no translucent glass overlays.
 //
-// Note on names: `cream` and `lilac` are the "Dawn" palette's names from
-// the original dark community-screen app, repurposed here as the primary
-// ink and secondary/muted text colours — kept so both apps can share this
-// file's shape even though the exact values differ.
+// Only three hues in play — red, black, white — so the two data series
+// that need telling apart (self-used vs exported, etc.) are red vs white/
+// cream rather than reaching for an unrelated gold/green, with a second,
+// darker red for negative/lowest-value accents.
+//
+// Note on names: `cream`, `lilac`, `sun`, `ochre`, `flax` are the original
+// "Dawn" palette's token names, repurposed here for the red/black/white
+// scheme — kept so both this app and the community screen can share this
+// file's shape even though the exact values and roles now differ.
 
 export const color = {
-  bg: '#17171b', // page background — dark grey, not black
+  bg: '#121212', // page background — near-black (pango)
 
-  sun: '#e0a850',
-  ochre: '#d08259', // kōkōwai [first-draft]
-  flax: '#6cb490', // flax green — used for positive/export figures
-  cream: '#f0efec', // primary text ink (near-white, not pure white)
-  lilac: '#9d9da5', // secondary/muted text
+  sun: '#d8232a', // kōkōwai red — primary accent (exported, highlights)
+  ochre: '#8c1a1a', // deeper red — negative/lowest-value accent
+  flax: '#f0efec', // mā white — secondary data colour (self-used, positive)
+  cream: '#f5f4f2', // primary text ink (mā white)
+  lilac: '#a3a3a3', // secondary/muted text (grey, not tinted)
 
-  panel: '#232329', // card surface — clearly lighter than bg for real elevation
-  panelAlt: '#2c2c33', // flat, striped rows / hover states
-  panelBorder: '#39393f', // flat border colour
-  panelBorderStrong: '#4d4d55',
+  panel: '#1c1c1c', // card surface — clearly lighter than bg for real elevation
+  panelAlt: '#262626', // flat, striped rows / hover states
+  panelBorder: '#343434', // flat border colour
+  panelBorderStrong: '#4a4a4a',
 
-  positive: '#6cb490',
-  negative: '#d08259',
+  positive: '#f0efec',
+  negative: '#8c1a1a',
 };
 
 export const font = {

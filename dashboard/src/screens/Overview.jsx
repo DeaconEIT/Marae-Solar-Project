@@ -93,8 +93,8 @@ export default function Overview({ data }) {
         </div>
         <p style={{ fontFamily: font.ui, fontSize: 13.5, color: color.lilac, marginTop: 0, marginBottom: 16, maxWidth: 560, lineHeight: 1.6 }}>
           Each bar is one day's total generation, split into what the marae used on-site
-          (<span style={{ color: color.flax }}>green</span>) versus what was exported to the grid
-          (<span style={{ color: color.sun }}>gold</span>). Hover a bar for the exact numbers.
+          (<span style={{ color: color.flax }}>white</span>) versus what was exported to the grid
+          (<span style={{ color: color.sun }}>red</span>). Hover a bar for the exact numbers.
         </p>
         <StackedBarChart daily={daily} />
       </div>
