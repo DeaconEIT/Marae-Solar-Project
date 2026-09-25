@@ -32,7 +32,7 @@ export default function DealModel({ data }) {
       </h1>
       <p style={{ fontFamily: font.ui, fontSize: 14.5, color: color.lilac, marginTop: 0, marginBottom: space(6), lineHeight: 1.6 }}>
         Model potential revenue from a power purchase agreement (PPA) or export
-        tariff, using real metered data from {periodLabel(daily)}. Rates below
+        tariff, using metered data from {periodLabel(daily)}. Rates below
         are illustrative inputs — adjust to match what's on the table in a
         negotiation, or the marae's real power bill once confirmed.
       </p>

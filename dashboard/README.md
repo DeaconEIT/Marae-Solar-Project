@@ -22,30 +22,6 @@ Opens on a local port (Vite prints the URL). It fetches
 (`POLL_INTERVAL_MS` in `src/data/useTrustData.js`) — this is a
 periodically-refreshed report, not a live feed.
 
-## Publishing it as a live website (GitHub Pages)
-
-A workflow at `.github/workflows/deploy-dashboard.yml` builds this app and
-publishes it to GitHub Pages automatically on every push to `main` that
-touches `dashboard/`. It'll be live at:
-
-```
-https://deaconeit.github.io/Marae-Solar-Project/
-```
-
-**One-time setup an admin on the repo needs to do** (this account doesn't
-have admin, so it can't be done from here): go to **Settings → Pages** on
-the repo, and under **Build and deployment → Source**, choose
-**GitHub Actions**. After that, the workflow above handles every future
-deploy — nothing further to configure.
-
-You can also trigger a deploy manually from the **Actions** tab
-("Deploy dashboard to GitHub Pages" → **Run workflow**) once Pages is
-enabled, without waiting for a push to `main`.
-
-Note the published site only ever shows whatever's in
-`public/muriwai_standard_30min.csv` at the time it was built — regenerate
-that file (see below) and push to `main` to update the live numbers.
-
 ## The data pipeline
 
 This project follows the standard data shape Trust Tairāwhiti asked for —
@@ -68,13 +44,41 @@ public/muriwai_standard_30min.csv          30-min standard format ← dashboard 
    the dashboard screens
 ```
 
-**The data is real** — both CSVs are built from a single actual Solarman
-portal export for Muriwai, `Muriwai 5kW + Batteries-Detailed Data-20260914.xlsx`
-(2026-09-01 to 2026-09-14, the last day partial — the file ends mid-afternoon).
-The raw export itself has some missing 5-min intervals within that range;
-the pipeline reports those gaps to stderr rather than filling them in.
+### ⚠️ The CSVs committed to this repo are synthetic, not real
 
-Quirks handled by the importer (see the comment block at the top of
+This app is deployed publicly (GitHub Pages) — publishing the marae's real,
+granular energy-use data there would expose actual occupancy/usage
+patterns, which is a genuine privacy concern, not just an abstraction.
+
+So `public/muriwai_readings_5min_clean.csv` and
+`public/muriwai_standard_30min.csv` in this repo are **generated fake
+data** (`scripts/generate_synthetic_data.py`) — a simple model (a daylight
+bell curve for generation, a base-load-plus-morning/evening-peak curve for
+consumption, both with random day-to-day variation) shaped to look like
+real output, not derived from or fitted to the real Muriwai readings. The
+sidebar shows an "Illustrative data" notice for exactly this reason —
+don't remove it from the public build.
+
+```bash
+python scripts/generate_synthetic_data.py public --days 14 --seed 42
+```
+
+**For real internal Trust analysis**, run the real pipeline locally and
+don't commit its output:
+
+```bash
+pip install openpyxl   # once
+python scripts/build_standard_csv.py ~/Downloads public
+```
+
+Then create a `.env.local` (gitignored, never committed) containing
+`VITE_ILLUSTRATIVE_DATA=false` to turn off the "illustrative data" banner
+for that local session — see `.env` for the default and
+`src/components/Sidebar.jsx` for where it's read. **Do not `git add` the
+real CSVs or push that `.env.local` change** — regenerate the synthetic
+files (command above) before committing anything to `public/`.
+
+Quirks the real importer handles (see the comment block at the top of
 `scripts/build_standard_csv.py` for the full explanation):
 - **Feed-in sign flip** — the raw export stores feed-in/export power as
   *negative*; the importer flips it to a positive `grid_export_w`.
@@ -84,18 +88,7 @@ Quirks handled by the importer (see the comment block at the top of
 - **Gaps** — missing 5-min intervals are left missing, not fabricated,
   and reported to stderr when the importer runs.
 
-### Regenerating the CSVs
-
-When a fresh batch of `*Detailed Data*.xlsx` exports comes from the
-Solarman portal (dropped in alongside older ones just extends the
-history — rows are de-duplicated by site + timestamp):
-
-```bash
-pip install openpyxl   # once
-python scripts/build_standard_csv.py ~/Downloads public
-```
-
-### What's real vs. a placeholder
+### What's real vs. a placeholder (when running the real pipeline)
 
 - **Real**: every `*_kwh` figure — generation, consumption, grid import,
   grid export, at 5-min and rolled-up-to-30-min resolution.
@@ -116,7 +109,7 @@ python scripts/build_standard_csv.py ~/Downloads public
   showing *when* export happens — relevant to time-of-use or PPA timing
   terms.
 - **Deal modelling** — adjustable import-rate and export-rate inputs,
-  computing the three project cost formulas directly from real metered
+  computing the three project cost formulas directly from the metered
   data:
   1. `cost of grid power = grid_import_kwh × import_rate`
   2. `value of exports = grid_export_kwh × export_rate`
@@ -148,5 +141,9 @@ what a future backend should target.
 - `src/components/` — Sidebar, KpiCard, DataTable, chart components
 - `src/screens/` — one file per screen (Overview, Generation, DealModel,
   RawData)
-- `scripts/build_standard_csv.py` — the Muriwai/Solarman importer;
-  produces both CSVs in `public/`
+- `scripts/build_standard_csv.py` — the real Muriwai/Solarman importer
+  (local/internal use only — don't commit its output to `public/`)
+- `scripts/generate_synthetic_data.py` — produces the fake-but-realistic
+  CSVs actually committed to `public/` for the public build
+- `.env` — sets the "illustrative data" banner on by default; see the
+  comment inside it for how to turn it off locally

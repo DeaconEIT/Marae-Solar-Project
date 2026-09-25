@@ -2,6 +2,11 @@ import { color, font } from '../theme/tokens';
 import { IconGrid, IconBars, IconHandshake, IconTable, IconDot } from './icons';
 import ThemeToggle from './ThemeToggle';
 
+// Defaults to true (see .env) since the CSVs committed to this repo's
+// public/ are synthetic. Set VITE_ILLUSTRATIVE_DATA=false in a (gitignored)
+// .env.local when running locally against real Trust data.
+const SHOW_ILLUSTRATIVE_BANNER = import.meta.env.VITE_ILLUSTRATIVE_DATA !== 'false';
+
 export const SCREENS = [
   { id: 'overview', label: 'Overview', Icon: IconGrid },
   { id: 'generation', label: 'Generation & export', Icon: IconBars },
@@ -69,6 +74,22 @@ export default function Sidebar({ screen, onChange, isLive, lastDate, theme, onT
       <ThemeToggle theme={theme} onToggle={onThemeChange} />
 
       <div style={{ marginTop: 'auto', fontFamily: font.ui, fontSize: 12.5, color: color.lilac }}>
+        {SHOW_ILLUSTRATIVE_BANNER && (
+          <div
+            style={{
+              padding: '8px 10px',
+              borderRadius: 6,
+              border: `1px solid ${color.panelBorder}`,
+              background: color.panelAlt,
+              marginBottom: 10,
+              lineHeight: 1.5,
+            }}
+          >
+            <strong style={{ color: color.cream }}>Illustrative data.</strong> Figures on
+            this published dashboard are a realistic synthetic example, not the
+            marae's real energy-use readings.
+          </div>
+        )}
         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
           <IconDot color={isLive ? color.flax : color.lilac} className={isLive ? 'pulse-dot' : undefined} />
           {isLive ? 'Data file connected' : 'Using bundled sample'}
