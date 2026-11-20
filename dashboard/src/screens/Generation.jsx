@@ -43,7 +43,7 @@ export default function Generation({ data }) {
 
       <section style={{ marginBottom: space(9) }}>
         <div style={{ fontFamily: font.ui, fontSize: 12.5, fontWeight: 600, letterSpacing: '0.06em', color: color.lilac, textTransform: 'uppercase', marginBottom: 14 }}>
-          Daily generation, every day on record
+          Recorded generation by date (partial day)
         </div>
         <StackedBarChart daily={daily} height={260} />
       </section>
@@ -53,11 +53,9 @@ export default function Generation({ data }) {
           When export happens — {formatDate(hourlyProfile.date)}
         </div>
         <p style={{ fontFamily: font.ui, fontSize: 13.5, color: color.lilac, marginTop: 0, marginBottom: 16, maxWidth: 600, lineHeight: 1.6 }}>
-          One representative day's hourly profile (30-min readings averaged into
-          kW), not an average across all days. Generation (red) peaks
-          mid-morning to early afternoon while site load (dashed) stays low most
-          of the day — <strong style={{ color: color.cream }}>the gap between the two lines is exportable surplus</strong>,
-          and matters for any time-of-use or PPA rate negotiation.
+          Measured solar generation and site load at each recorded timestamp.
+          This short recording does not establish a daily pattern or seasonal output.
+          Energy totals integrate power between samples over the recorded window only.
         </p>
         <div
           style={{

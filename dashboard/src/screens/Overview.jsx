@@ -19,7 +19,7 @@ export default function Overview({ data }) {
       </h1>
       <p style={{ fontFamily: font.ui, fontSize: 15, color: color.lilac, marginTop: 0, marginBottom: 26, maxWidth: 620, lineHeight: 1.65 }}>
         In plain terms: the panels made <strong style={{ color: color.cream }}>{totals.generationKwh} kWh</strong> over
-        this period. Most of that — <strong style={{ color: color.cream }}>{exportPct}%</strong> — went straight back
+        this period. Of that — <strong style={{ color: color.cream }}>{exportPct}%</strong> — was exported
         to the grid because the marae wasn't using it at the time. That surplus is the thing worth putting a price on.
       </p>
 
@@ -59,31 +59,31 @@ export default function Overview({ data }) {
           hint="Bought from the grid when solar + battery weren't enough to cover use."
         />
         <KpiCard
-          label="Avg daily generation"
+          label="Avg recorded generation per day"
           value={avgDailyGenerationKwh}
           unit="kWh"
           accent={color.cream}
           Icon={IconBars}
-          hint="A typical day's output across this whole period."
+          hint="Average across recorded windows only; this is not a full-day estimate."
         />
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 12, marginTop: 12 }}>
         <KpiCard
-          label="Best day"
+          label="Highest recorded day"
           value={bestDay.generationKwh}
           unit="kWh"
           sub={formatDate(bestDay.date)}
           accent={color.flax}
-          hint="The sunniest, highest-output day on record."
+          hint="Highest recorded window total; partial days are not comparable to full days."
         />
         <KpiCard
-          label="Lowest day"
+          label="Lowest recorded day"
           value={worstDay.generationKwh}
           unit="kWh"
           sub={formatDate(worstDay.date)}
           accent={color.ochre}
-          hint="The cloudiest day — useful for sizing what a worst case looks like."
+          hint="Lowest recorded window total; this does not establish a worst-case full day."
         />
       </div>
 
@@ -92,7 +92,7 @@ export default function Overview({ data }) {
           Daily generation — self-used vs exported
         </div>
         <p style={{ fontFamily: font.ui, fontSize: 13.5, color: color.lilac, marginTop: 0, marginBottom: 16, maxWidth: 560, lineHeight: 1.6 }}>
-          Each bar is one day's total generation, split into what the marae used on-site
+          Each bar is the recorded generation for that date, split into what the marae used on-site
           (<span style={{ color: color.flax }}>white</span>) versus what was exported to the grid
           (<span style={{ color: color.sun }}>red</span>). Hover a bar for the exact numbers.
         </p>

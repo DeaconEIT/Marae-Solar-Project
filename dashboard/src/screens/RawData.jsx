@@ -24,10 +24,10 @@ export default function RawData({ data }) {
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12, marginBottom: 18 }}>
         <div>
           <h1 style={{ fontFamily: font.display, fontSize: 28, fontWeight: 600, color: color.cream, margin: 0 }}>
-            Raw daily data
+            Recorded energy by date
           </h1>
           <p style={{ fontFamily: font.ui, fontSize: 13.5, color: color.lilac, margin: '6px 0 0' }}>
-            {daily.length} days, rolled up from the 30-min standard readings. Click a column to sort.
+            {daily.length} recorded date(s), integrated from 10-second power samples. Partial-day totals only. Click a column to sort.
           </p>
         </div>
         <button
@@ -66,8 +66,8 @@ export default function RawData({ data }) {
         }}
       >
         <strong style={{ color: color.cream }}>Reading this table:</strong> Generation is everything the
-        panels made that day. Exported + Consumption − Imported ≈ Generation (small rounding gaps are
-        normal). Self-suff. % is the share of that day's use that didn't need a grid import.
+        panels made during the recorded window. Exported + Consumption − Imported ≈ Generation (small rounding gaps are
+        normal). Self-suff. % is the share of recorded use that didn't need a grid import.
       </div>
 
       <DataTable columns={COLUMNS} rows={daily} />

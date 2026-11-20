@@ -1,5 +1,5 @@
-// Loads the project's "standard format" — muriwai_standard_30min.csv — and
-// turns it into daily rollups + an hourly profile for the dashboard.
+// Loads interval energy plus the original Sigenergy power recording.
+// The legacy CSV filename is retained; interval_seconds is the actual duration.
 //
 // This file is deliberately site-agnostic: it reads the four project
 // metrics (generation_kwh, consumption_kwh, grid_import_kwh, grid_export_kwh)
@@ -25,12 +25,11 @@ function toNum(v) {
   return Number.isFinite(n) ? n : 0;
 }
 
-// Rolls 30-min rows up into one row per calendar day (NZ local date, which
-// the +12:00 offset in each timestamp already reflects).
+// Sum only the recorded intervals by the calendar date in the workbook.
 function rollUpDaily(rows) {
   const byDate = new Map();
   for (const row of rows) {
-    const date = row.timestamp.slice(0, 10); // YYYY-MM-DD, local per the +12:00 offset
+    const date = row.timestamp.slice(0, 10);
     const bucket = byDate.get(date) ?? {
       date,
       generationKwh: 0,
@@ -57,49 +56,20 @@ function rollUpDaily(rows) {
     .sort((a, b) => a.date.localeCompare(b.date));
 }
 
-// Hourly generation/load profile for the most recent day that has close to
-// full-day coverage (used to show WHEN export happens, not a daily average).
-function hourlyProfile(rows) {
-  const byDate = new Map();
-  for (const row of rows) {
-    const date = row.timestamp.slice(0, 10);
-    if (!byDate.has(date)) byDate.set(date, []);
-    byDate.get(date).push(row);
-  }
-  const fullDayDates = [...byDate.entries()]
-    .filter(([, dayRows]) => dayRows.length >= 40) // 48 = a complete day at 30-min steps
-    .map(([date]) => date)
-    .sort();
-  const targetDate = fullDayDates[fullDayDates.length - 1] ?? [...byDate.keys()].sort().pop();
-  const dayRows = (byDate.get(targetDate) ?? []).sort((a, b) => a.timestamp.localeCompare(b.timestamp));
-
-  const hours = [...new Set(dayRows.map((r) => Number(r.timestamp.slice(11, 13))))].sort((a, b) => a - b);
-  const genByHour = Object.fromEntries(hours.map((h) => [h, []]));
-  const useByHour = Object.fromEntries(hours.map((h) => [h, []]));
-  for (const row of dayRows) {
-    const h = Number(row.timestamp.slice(11, 13));
-    // kWh over a 30-min bucket -> average kW for that bucket
-    genByHour[h].push(toNum(row.generation_kwh) * 2);
-    useByHour[h].push(toNum(row.consumption_kwh) * 2);
-  }
-  const avg = (arr) => (arr.length ? round(arr.reduce((a, b) => a + b, 0) / arr.length) : 0);
-
-  return {
-    date: targetDate,
-    hours,
-    genKw: hours.map((h) => avg(genByHour[h])),
-    useKw: hours.map((h) => avg(useByHour[h])),
-  };
-}
-
 function round(n) {
   return Math.round(n * 100) / 100;
 }
 
 export async function loadReadings() {
-  const res = await fetch(CSV_URL, { cache: 'no-store' });
+  const [res, recordingRes] = await Promise.all([
+    fetch(CSV_URL, { cache: 'no-store' }),
+    fetch('./sigenergy-recording.json', { cache: 'no-store' }),
+  ]);
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  if (!recordingRes.ok) throw new Error('Recording unavailable');
+  const recording = await recordingRes.json();
   const rows = parseCsv(await res.text());
+  if (!rows.length || !recording.samples?.length) throw new Error('No recorded readings');
   const daily = rollUpDaily(rows);
 
   const totals = daily.reduce(
@@ -124,6 +94,12 @@ export async function loadReadings() {
     avgDailyGenerationKwh: daily.length ? round(totals.generationKwh / daily.length) : 0,
     bestDay,
     worstDay,
-    hourlyProfile: hourlyProfile(rows),
+    recording,
+    hourlyProfile: {
+      date: recording.start.slice(0, 10),
+      hours: recording.samples.map((s) => s.timestamp.slice(11, 19)),
+      genKw: recording.samples.map((s) => s.solarKw),
+      useKw: recording.samples.map((s) => s.loadKw),
+    },
   };
 }

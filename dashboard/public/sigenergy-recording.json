@@ -1,0 +1,612 @@
+{
+  "source": "sigen_log_10min.xlsx",
+  "start": "2026-11-20T11:45:35",
+  "end": "2026-11-20T11:55:25",
+  "sampleCount": 60,
+  "durationSeconds": 590.0,
+  "partial": true,
+  "timezone": "As recorded in workbook (timezone not supplied)",
+  "integration": "Trapezoidal integration between samples; no extrapolation",
+  "samples": [
+    {
+      "timestamp": "2026-11-20T11:45:35",
+      "solarKw": 12.367,
+      "gridKw": -10.966,
+      "loadKw": 1.401,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.36,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:45:45",
+      "solarKw": 12.356,
+      "gridKw": -10.946,
+      "loadKw": 1.41,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.375,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:45:55",
+      "solarKw": 12.362,
+      "gridKw": -11.047,
+      "loadKw": 1.315,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.374,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:46:04",
+      "solarKw": 12.371,
+      "gridKw": -11.054,
+      "loadKw": 1.317,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.371,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:46:15",
+      "solarKw": 12.401,
+      "gridKw": -11.036,
+      "loadKw": 1.365,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.401,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:46:25",
+      "solarKw": 12.414,
+      "gridKw": -11.075,
+      "loadKw": 1.339,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.414,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:46:35",
+      "solarKw": 12.421,
+      "gridKw": -11.033,
+      "loadKw": 1.388,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.41,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:46:45",
+      "solarKw": 12.45,
+      "gridKw": -11.059,
+      "loadKw": 1.391,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.451,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:46:55",
+      "solarKw": 12.473,
+      "gridKw": -11.141,
+      "loadKw": 1.332,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.466,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:47:05",
+      "solarKw": 12.479,
+      "gridKw": -11.148,
+      "loadKw": 1.331,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.485,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:47:15",
+      "solarKw": 12.483,
+      "gridKw": -11.101,
+      "loadKw": 1.382,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.484,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:47:25",
+      "solarKw": 12.483,
+      "gridKw": -11.138,
+      "loadKw": 1.345,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.506,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:47:34",
+      "solarKw": 12.507,
+      "gridKw": -11.172,
+      "loadKw": 1.335,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.492,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:47:45",
+      "solarKw": 12.514,
+      "gridKw": -11.149,
+      "loadKw": 1.365,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.516,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:47:55",
+      "solarKw": 12.549,
+      "gridKw": -11.178,
+      "loadKw": 1.371,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.549,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:48:05",
+      "solarKw": 12.564,
+      "gridKw": -11.205,
+      "loadKw": 1.359,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.564,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:48:15",
+      "solarKw": 12.592,
+      "gridKw": -11.226,
+      "loadKw": 1.366,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.592,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:48:25",
+      "solarKw": 12.636,
+      "gridKw": -11.314,
+      "loadKw": 1.322,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.636,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:48:35",
+      "solarKw": 12.682,
+      "gridKw": -11.308,
+      "loadKw": 1.374,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.682,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:48:45",
+      "solarKw": 12.709,
+      "gridKw": -11.369,
+      "loadKw": 1.34,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.709,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:48:55",
+      "solarKw": 12.748,
+      "gridKw": -11.378,
+      "loadKw": 1.37,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.738,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:49:05",
+      "solarKw": 12.763,
+      "gridKw": -11.449,
+      "loadKw": 1.314,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.767,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:49:15",
+      "solarKw": 12.761,
+      "gridKw": -11.406,
+      "loadKw": 1.355,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.759,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:49:25",
+      "solarKw": 12.757,
+      "gridKw": -11.41,
+      "loadKw": 1.347,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.747,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:49:35",
+      "solarKw": 12.74,
+      "gridKw": -11.443,
+      "loadKw": 1.297,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.735,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:49:45",
+      "solarKw": 12.714,
+      "gridKw": -11.445,
+      "loadKw": 1.269,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.714,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:49:55",
+      "solarKw": 12.692,
+      "gridKw": -11.401,
+      "loadKw": 1.291,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.697,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:50:04",
+      "solarKw": 12.695,
+      "gridKw": -11.36,
+      "loadKw": 1.335,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.7,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:50:15",
+      "solarKw": 12.681,
+      "gridKw": -11.383,
+      "loadKw": 1.298,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.678,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:50:25",
+      "solarKw": 12.665,
+      "gridKw": -11.377,
+      "loadKw": 1.288,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.659,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:50:35",
+      "solarKw": 12.653,
+      "gridKw": -10.012,
+      "loadKw": 2.641,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.656,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:50:45",
+      "solarKw": 12.665,
+      "gridKw": -10.055,
+      "loadKw": 2.61,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.663,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:50:55",
+      "solarKw": 12.667,
+      "gridKw": -10.037,
+      "loadKw": 2.63,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.662,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:51:05",
+      "solarKw": 12.662,
+      "gridKw": -10.055,
+      "loadKw": 2.607,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.653,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:51:15",
+      "solarKw": 12.671,
+      "gridKw": -10.04,
+      "loadKw": 2.631,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.675,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:51:25",
+      "solarKw": 12.672,
+      "gridKw": -10.097,
+      "loadKw": 2.575,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.682,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:51:35",
+      "solarKw": 12.682,
+      "gridKw": -10.111,
+      "loadKw": 2.571,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.682,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:51:45",
+      "solarKw": 12.681,
+      "gridKw": -10.073,
+      "loadKw": 2.608,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.681,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:51:55",
+      "solarKw": 12.683,
+      "gridKw": -10.101,
+      "loadKw": 2.582,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.683,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:52:05",
+      "solarKw": 12.678,
+      "gridKw": -11.356,
+      "loadKw": 1.322,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.678,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:52:15",
+      "solarKw": 12.646,
+      "gridKw": -11.347,
+      "loadKw": 1.299,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.646,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:52:24",
+      "solarKw": 12.617,
+      "gridKw": -11.372,
+      "loadKw": 1.245,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.622,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:52:35",
+      "solarKw": 12.591,
+      "gridKw": -11.317,
+      "loadKw": 1.274,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.583,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:52:45",
+      "solarKw": 12.578,
+      "gridKw": -11.31,
+      "loadKw": 1.268,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.572,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:52:55",
+      "solarKw": 12.551,
+      "gridKw": -11.326,
+      "loadKw": 1.225,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.562,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:53:05",
+      "solarKw": 12.548,
+      "gridKw": -11.306,
+      "loadKw": 1.242,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.554,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:53:15",
+      "solarKw": 12.546,
+      "gridKw": -11.298,
+      "loadKw": 1.248,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.552,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:53:25",
+      "solarKw": 12.539,
+      "gridKw": -11.308,
+      "loadKw": 1.231,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.539,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:53:35",
+      "solarKw": 12.48,
+      "gridKw": -11.197,
+      "loadKw": 1.283,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.489,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:53:45",
+      "solarKw": 12.476,
+      "gridKw": -11.198,
+      "loadKw": 1.278,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.479,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:53:55",
+      "solarKw": 12.504,
+      "gridKw": -11.24,
+      "loadKw": 1.264,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.509,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:54:04",
+      "solarKw": 12.488,
+      "gridKw": -11.222,
+      "loadKw": 1.266,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.504,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:54:15",
+      "solarKw": 12.452,
+      "gridKw": -11.153,
+      "loadKw": 1.299,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.445,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:54:25",
+      "solarKw": 12.432,
+      "gridKw": -11.191,
+      "loadKw": 1.241,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.424,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:54:35",
+      "solarKw": 12.379,
+      "gridKw": -11.095,
+      "loadKw": 1.284,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.389,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:54:45",
+      "solarKw": 12.391,
+      "gridKw": -11.104,
+      "loadKw": 1.287,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.371,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:54:54",
+      "solarKw": 12.373,
+      "gridKw": -11.1,
+      "loadKw": 1.273,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.368,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:55:05",
+      "solarKw": 12.386,
+      "gridKw": -11.097,
+      "loadKw": 1.289,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.394,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:55:15",
+      "solarKw": 12.422,
+      "gridKw": -11.127,
+      "loadKw": 1.295,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.422,
+      "emsMode": 0.0
+    },
+    {
+      "timestamp": "2026-11-20T11:55:25",
+      "solarKw": 12.39,
+      "gridKw": -11.139,
+      "loadKw": 1.251,
+      "batteryKw": 0.0,
+      "batterySocPct": 100.0,
+      "plantKw": 12.39,
+      "emsMode": 0.0
+    }
+  ]
+}

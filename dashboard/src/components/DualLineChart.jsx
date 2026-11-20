@@ -19,7 +19,7 @@ export default function DualLineChart({ hours, seriesA, seriesB, labelA, labelB,
 
   return (
     <div>
-      <svg viewBox={`0 0 ${width} ${height}`} width="100%" height={height} role="img" aria-label={`${labelA} vs ${labelB} by hour`}>
+      <svg viewBox={`0 0 ${width} ${height}`} width="100%" height={height} role="img" aria-label={`${labelA} vs ${labelB} by recorded time`}>
         {[0, 0.25, 0.5, 0.75, 1].map((f) => (
           <g key={f}>
             <line x1={leftAxisW} x2={width} y1={chartH - chartH * f} y2={chartH - chartH * f} stroke={color.panelBorder} strokeWidth="1" />
@@ -31,9 +31,9 @@ export default function DualLineChart({ hours, seriesA, seriesB, labelA, labelB,
         <path d={toPath(pointsA)} fill="none" stroke={color.sun} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
         <path d={toPath(pointsB)} fill="none" stroke={color.lilac} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="4 4" />
         {hours.map((h, i) => (
-          i % 2 === 0 && (
+          i % Math.max(1, Math.ceil(hours.length / 6)) === 0 && (
             <text key={h} x={leftAxisW + i * stepX} y={height - 8} textAnchor="middle" fontFamily={font.ui} fontSize="11" fill={color.lilac}>
-              {h}:00
+              {typeof h === 'string' ? h.slice(0, 5) : `${h}:00`}
             </text>
           )
         ))}

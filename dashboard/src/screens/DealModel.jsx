@@ -4,7 +4,7 @@ import KpiCard from '../components/KpiCard';
 import { IconArrow, IconLeaf, IconHandshake } from '../components/icons';
 import { exportSharePct, periodLabel } from '../lib/metrics';
 
-const nzd = (n) => `$${n.toLocaleString('en-NZ', { maximumFractionDigits: 0 })}`;
+const nzd = (n) => `$${n.toLocaleString('en-NZ', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
 // The three cost formulas from the project's data spec:
 //   1. cost of grid power              = grid_import_kwh x import_rate
@@ -14,6 +14,7 @@ const nzd = (n) => `$${n.toLocaleString('en-NZ', { maximumFractionDigits: 0 })}`
 export default function DealModel({ data }) {
   const { daily, totals } = data;
   const days = daily.length || 1;
+  const canProjectAnnual = !data.recording?.partial;
   const [importRate, setImportRate] = useState(0.32);
   const [exportRate, setExportRate] = useState(0.12);
 
@@ -80,7 +81,7 @@ export default function DealModel({ data }) {
         />
       </div>
 
-      <div style={{ marginBottom: space(6) }}>
+      {canProjectAnnual && <div style={{ marginBottom: space(6) }}>
         <KpiCard
           label={`Projected annual export revenue, at $${exportRate.toFixed(2)}/kWh`}
           value={nzd(annualExportValue)}
@@ -89,7 +90,7 @@ export default function DealModel({ data }) {
           Icon={IconHandshake}
           hint="If this rate held all year: a rough yearly figure to bring to a negotiation, not a guarantee."
         />
-      </div>
+      </div>}
 
       <p
         style={{
@@ -105,10 +106,10 @@ export default function DealModel({ data }) {
           borderRadius: '0 8px 8px 0',
         }}
       >
-        In short: at these rates, the marae is already saving about{' '}
-        <strong style={{ color: color.flax }}>{nzd(avoidedCostValue)}</strong> by using its own solar, and could
-        earn roughly <strong style={{ color: color.sun }}>{nzd(annualExportValue)}/year</strong> more by selling
-        the surplus — worth testing against whatever rate a retailer actually offers.
+        At these assumed rates, exports in the recorded window are worth{' '}
+        <strong style={{ color: color.sun }}>{nzd(exportValue)}</strong>.
+        Annual revenue is unavailable from this short partial-day recording.
+        More full days across seasons are needed for a useful annual estimate.
       </p>
 
       <section>
